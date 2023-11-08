@@ -17,7 +17,7 @@ async function Page({ params }: { params: { id: string } }) {
 
   return (
     <section>
-        <ProfileHeader
+      <ProfileHeader
         accountId={userInfo.id}
         authUserId={user.id}
         name={userInfo.name}
@@ -26,17 +26,17 @@ async function Page({ params }: { params: { id: string } }) {
         bio={userInfo.bio}
       />
 
-<div className='mt-9'>
+      <div className='mt-9'>
         <Tabs defaultValue='threads' className='w-full'>
           <TabsList className='tab'>
             {profileTabs.map((tab) => (
               <TabsTrigger key={tab.label} value={tab.value} className='tab'>
-               <Image
-                src={tab.icon}
-                alt={tab.label}
-                width={24}
-                height={24}
-                className="object-contain"
+                <Image
+                  src={tab.icon}
+                  alt={tab.label}
+                  width={24}
+                  height={24}
+                  className='object-contain'
                 />
                 <p className='max-sm:hidden'>{tab.label}</p>
 
@@ -65,6 +65,6 @@ async function Page({ params }: { params: { id: string } }) {
         </Tabs>
       </div>
     </section>
-  )
+  );
 }
-export default Page; 
+export default Page;

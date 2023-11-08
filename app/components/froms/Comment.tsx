@@ -6,15 +6,19 @@ import { useForm } from "react-hook-form";
 import { usePathname } from "next/navigation";
 import { zodResolver } from "@hookform/resolvers/zod";
 
-
+import {
+  Form,
+  FormControl,
+  FormField,
+  FormItem,
+  FormLabel,
+} from "@/app/components/ui/form";
 
 import { Input } from "../ui/input";
 import { Button } from "../ui/button";
 
 import { CommentValidation } from "@/lib/validations/thread";
-import { Form, FormControl, FormField, FormItem, FormLabel } from "@/app/components/ui/form";
 import { addCommentToThread } from "@/lib/actions/thread.action";
-//import { addCommentToThread } from "@/lib/actions/thread.actions";
 
 interface Props {
   threadId: string;

@@ -6,7 +6,7 @@ import { useForm } from "react-hook-form";
 import { usePathname, useRouter } from "next/navigation";
 import { ChangeEvent, useState } from "react";
 import { zodResolver } from "@hookform/resolvers/zod";
-
+  
 import {
   Form,
   FormControl,
@@ -40,6 +40,7 @@ const AccountProfile = ({ user, btnTitle }: Props) => {
   const router = useRouter();
   const pathname = usePathname();
   const { startUpload } = useUploadThing("media");
+
   const [files, setFiles] = useState<File[]>([]);
 
   const form = useForm<z.infer<typeof UserValidation>>({
@@ -64,21 +65,21 @@ const AccountProfile = ({ user, btnTitle }: Props) => {
       }
     }
 
-  await updateUser({
-    name: values.name,
-    path: pathname,
-    username: values.username,
-    userId: user.id,
-    bio: values.bio,
-    image: values.profile_photo,
-  });
+    await updateUser({
+      name: values.name,
+      path: pathname,
+      username: values.username,
+      userId: user.id,
+      bio: values.bio,
+      image: values.profile_photo,
+    });
 
-  if (pathname === "/profile/edit") {
-    router.back();
-  } else {
-    router.push("/");
-  }
-};
+    if (pathname === "/profile/edit") {
+      router.back();
+    } else {
+      router.push("/");
+    }
+  };
 
   const handleImage = (
     e: ChangeEvent<HTMLInputElement>,

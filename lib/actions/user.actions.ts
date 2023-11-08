@@ -38,9 +38,9 @@ export async function updateUser({
   username,
   image,
 }: Params): Promise<void> {
+  try {
     connectToDB();
 
-  try {
     await User.findOneAndUpdate(
       { id: userId },
       {
@@ -52,12 +52,12 @@ export async function updateUser({
       },
       { upsert: true }
     );
-  
-    if(path === '/profile/edit') {
+
+    if (path === "/profile/edit") {
       revalidatePath(path);
     }
   } catch (error: any) {
-    throw new Error('Failed to create/update user: ${error.message}')
+    throw new Error(`Failed to create/update user: ${error.message}`);
   }
 }
 
@@ -93,6 +93,7 @@ export async function fetchUserPosts(userId: string) {
   }
 }
 
+// Almost similar to Thead (search + pagination) and Community (search + pagination)
 export async function fetchUsers({
   userId,
   searchString = "",
